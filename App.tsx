@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
-import { Alert, SafeAreaView, View } from "react-native";
+import { useRef, useState } from "react";
+import { Button, EmitterSubscription, SafeAreaView, View } from "react-native";
 import { useIsMounted, usePermission } from "./src/utils/hooks";
 import { VideoView } from "./src/video-view";
 import { styles } from "./src/utils/styles";
 import generateJwt from "./src/utils/jwt";
 import {
-  Errors,
   EventType,
   ZoomVideoSdkProvider,
   ZoomVideoSdkUser,
   ZoomVideoSdkUserType,
   useZoom,
 } from "@zoom/react-native-videosdk";
-import { params } from "./config";
+import { config } from "./config";
 
 export default function App() {
   usePermission();
@@ -21,7 +20,9 @@ export default function App() {
     <ZoomVideoSdkProvider
       config={{ appGroupId: "test", domain: "zoom.us", enableLog: true }}
     >
-      <Call />
+      <SafeAreaView style={styles.container}>
+        <Call />
+      </SafeAreaView>
     </ZoomVideoSdkProvider>
   );
 }
@@ -29,44 +30,25 @@ export default function App() {
 const Call = () => {
   const zoom = useZoom();
   const isMounted = useIsMounted();
+  const listeners = useRef<EmitterSubscription[]>([]);
   const [users, setUsersInSession] = useState<ZoomVideoSdkUser[]>([]);
   const [fullScreenUser, setFullScreenUser] = useState<ZoomVideoSdkUser>();
   const [isInSession, setIsInSession] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isAudioMuted, setIsAudioMuted] = useState(false);
   const [isVideoOn, setIsVideoOn] = useState(false);
 
-  useEffect(() => {
-    const join = async () => {
-      const token = await generateJwt(params.sessionName, params.roleType);
-      try {
-        await zoom.joinSession({
-          sessionName: params.sessionName,
-          sessionPassword: params.sessionPassword,
-          token: token,
-          userName: params.displayName,
-          audioOptions: {
-            connect: true,
-            mute: true,
-            autoAdjustSpeakerVolume: false,
-          },
-          videoOptions: { localVideoOn: true },
-          sessionIdleTimeoutMins: params.sessionIdleTimeoutMins,
-        });
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    join();
-  }, [zoom]);
-  useEffect(() => {
+  const join = async () => {
+    const token = await generateJwt(config.sessionName, config.roleType);
+
     const sessionJoinListener = zoom.addListener(
       EventType.onSessionJoin,
-      async (session: any) => {
-        const mySelf = new ZoomVideoSdkUser(session.mySelf);
+      async () => {
+        const mySelf = new ZoomVideoSdkUser(await zoom.session.getMySelf());
         const remoteUsers: ZoomVideoSdkUser[] =
           await zoom.session.getRemoteUsers();
         setUsersInSession([mySelf, ...remoteUsers]);
         setFullScreenUser(mySelf);
+        setIsInSession(true);
       }
     );
 
@@ -78,27 +60,11 @@ const Call = () => {
       }
     );
 
-    const sessionNeedPasswordListener = zoom.addListener(
-      EventType.onSessionNeedPassword,
-      () => {
-        Alert.alert("SessionNeedPassword");
-      }
-    );
-
-    const sessionPasswordWrongListener = zoom.addListener(
-      EventType.onSessionPasswordWrong,
-      () => {
-        Alert.alert("SessionPasswordWrong");
-      }
-    );
-
     const userVideoStatusChangedListener = zoom.addListener(
       EventType.onUserVideoStatusChanged,
       async ({ changedUsers }: { changedUsers: ZoomVideoSdkUserType[] }) => {
-        const mySelf: ZoomVideoSdkUser = new ZoomVideoSdkUser(
-          await zoom.session.getMySelf()
-        );
-        changedUsers.map((u: ZoomVideoSdkUserType) => {
+        const mySelf = new ZoomVideoSdkUser(await zoom.session.getMySelf());
+        changedUsers.map((u) => {
           if (mySelf.userId === u.userId) {
             mySelf.videoStatus.isOn().then((on) => setIsVideoOn(on));
           }
@@ -109,12 +75,12 @@ const Call = () => {
     const userAudioStatusChangedListener = zoom.addListener(
       EventType.onUserAudioStatusChanged,
       async ({ changedUsers }: { changedUsers: ZoomVideoSdkUserType[] }) => {
-        const mySelf: ZoomVideoSdkUser = new ZoomVideoSdkUser(
-          await zoom.session.getMySelf()
-        );
-        changedUsers.map((u: ZoomVideoSdkUserType) => {
+        const mySelf = new ZoomVideoSdkUser(await zoom.session.getMySelf());
+        changedUsers.map((u) => {
           if (mySelf.userId === u.userId) {
-            mySelf.audioStatus.isMuted().then((muted) => setIsMuted(muted));
+            mySelf.audioStatus
+              .isMuted()
+              .then((muted) => setIsAudioMuted(muted));
           }
         });
       }
@@ -125,9 +91,7 @@ const Call = () => {
       async ({ remoteUsers }: { remoteUsers: ZoomVideoSdkUserType[] }) => {
         if (!isMounted()) return;
         const mySelf = await zoom.session.getMySelf();
-        const remote: ZoomVideoSdkUser[] = remoteUsers.map(
-          (user: ZoomVideoSdkUserType) => new ZoomVideoSdkUser(user)
-        );
+        const remote = remoteUsers.map((user) => new ZoomVideoSdkUser(user));
         setUsersInSession([mySelf, ...remote]);
       }
     );
@@ -142,12 +106,10 @@ const Call = () => {
         leftUsers: ZoomVideoSdkUserType[];
       }) => {
         if (!isMounted()) return;
-        const mySelf: ZoomVideoSdkUser = await zoom.session.getMySelf();
-        const remote: ZoomVideoSdkUser[] = remoteUsers.map(
-          (user: ZoomVideoSdkUserType) => new ZoomVideoSdkUser(user)
-        );
+        const mySelf = await zoom.session.getMySelf();
+        const remote = remoteUsers.map((user) => new ZoomVideoSdkUser(user));
         if (fullScreenUser) {
-          leftUsers.map((user: ZoomVideoSdkUserType) => {
+          leftUsers.map((user) => {
             if (fullScreenUser.userId === user.userId) {
               setFullScreenUser(mySelf);
               return;
@@ -162,35 +124,77 @@ const Call = () => {
 
     const eventErrorListener = zoom.addListener(
       EventType.onError,
-      async (error: any) => {
-        console.log("Error: " + JSON.stringify(error));
-        Alert.alert("Error: " + error.error);
-        switch (error.errorType) {
-          case Errors.SessionJoinFailed:
-            Alert.alert("Failed to join the session");
-            break;
-          default:
-            Alert.alert("Failed to join the session");
-        }
-      }
+      async (error: any) => console.log("Error: " + JSON.stringify(error))
     );
+    listeners.current.push(sessionJoinListener);
+    listeners.current.push(sessionLeaveListener);
+    listeners.current.push(userVideoStatusChangedListener);
+    listeners.current.push(userAudioStatusChangedListener);
+    listeners.current.push(userJoinListener);
+    listeners.current.push(userLeaveListener);
+    listeners.current.push(eventErrorListener);
 
-    return () => {
-      sessionJoinListener.remove();
-      sessionLeaveListener.remove();
-      sessionPasswordWrongListener.remove();
-      sessionNeedPasswordListener.remove();
-      userVideoStatusChangedListener.remove();
-      userAudioStatusChangedListener.remove();
-      userJoinListener.remove();
-      userLeaveListener.remove();
-      eventErrorListener.remove();
-    };
-  }, [zoom, isMounted]);
-
-  const leaveSession = (endSession: boolean) => {
-    zoom.leaveSession(endSession);
+    try {
+      await zoom.joinSession({
+        sessionName: config.sessionName,
+        sessionPassword: config.sessionPassword,
+        token: token,
+        userName: config.displayName,
+        audioOptions: {
+          connect: true,
+          mute: true,
+          autoAdjustSpeakerVolume: false,
+        },
+        videoOptions: { localVideoOn: true },
+        sessionIdleTimeoutMins: config.sessionIdleTimeoutMins,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
+
+  const leaveSession = () => {
+    zoom.leaveSession(false);
+    listeners.current.forEach((listener) => listener.remove());
+    listeners.current = [];
+    setIsInSession(false);
+  };
+
+  return isInSession ? (
+    <View style={styles.bottomWrapper}>
+      {users.map((user) => (
+        <View style={{ display: "flex", flex: 1 }} key={user.userId}>
+          <VideoView user={user} key={user.userId} />
+        </View>
+      ))}
+      <MuteButtons isAudioMuted={isAudioMuted} isVideoOn={isVideoOn} />
+      <Button
+        title="Leave Session"
+        onPress={async () => {
+          leaveSession();
+        }}
+      />
+    </View>
+  ) : (
+    <View style={styles.bottomWrapper}>
+      <Button
+        title="Join Session"
+        onPress={async () => {
+          await join();
+        }}
+      />
+    </View>
+  );
+};
+
+const MuteButtons = ({
+  isAudioMuted,
+  isVideoOn,
+}: {
+  isAudioMuted: boolean;
+  isVideoOn: boolean;
+}) => {
+  const zoom = useZoom();
   const onPressAudio = async () => {
     const mySelf = await zoom.session.getMySelf();
     const muted = await mySelf.audioStatus.isMuted();
@@ -206,16 +210,20 @@ const Call = () => {
       ? await zoom.videoHelper.stopVideo()
       : await zoom.videoHelper.startVideo();
   };
-
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.bottomWrapper}>
-        {users.map((item) => (
-          <View style={{ display: "flex", flex: 1 }}>
-            <VideoView user={item} key={item.userId} />
-          </View>
-        ))}
-      </View>
-    </SafeAreaView>
+    <View>
+      <Button
+        title={isAudioMuted ? "Unmute" : "Mute"}
+        onPress={async () => {
+          await onPressAudio();
+        }}
+      />
+      <Button
+        title={isVideoOn ? "Stop Video" : "Start Video"}
+        onPress={async () => {
+          await onPressVideo();
+        }}
+      />
+    </View>
   );
 };

@@ -59,7 +59,12 @@ target 'zoomexpo' do
       config[:reactNativePath],
       :mac_catalyst_enabled => false
     )
-
+    # This is necessary for getting x86 simulator builds to work
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings["ONLY_ACTIVE_ARCH"] = "NO"
+      end
+    end
     # This is necessary for Xcode 14, because it signs resource bundles by default
     # when building for devices.
     installer.target_installation_results.pod_target_installation_results

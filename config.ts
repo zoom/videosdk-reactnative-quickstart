@@ -1,5 +1,5 @@
-export const params = {
-  sessionName: "TestOne1",
+export const config = {
+  sessionName: "TestOne",
   roleType: "1",
   sessionPassword: "",
   displayName: "test",
