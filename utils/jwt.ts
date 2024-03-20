@@ -2,7 +2,7 @@
 // THIS IS NOT A SAFE OPERATION TO DO IN YOUR APP IN PRODUCTION.
 // JWTs should be provided by a backend server as they require a secret
 // WHICH IS NOT SAFE TO STORE ON DEVICE!
-// @ts-ignore
+
 import { sign } from 'react-native-pure-jwt';
 
 const ZOOM_APP_KEY = "";

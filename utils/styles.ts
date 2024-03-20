@@ -4,29 +4,33 @@ export const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: '#ff00ff',
     flex: 1,
+    justifyContent: 'center',
+    // backgroundColor: '#ff00ff',
+  },
+  spacer: {
+    height: 8,
+    width: 8,
   },
   fullScreenVideo: {
     width: '100%',
     height: '100%',
     flex: 1,
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
   },
-  bottomWrapper: {
-    paddingHorizontal: 8,
-    flex: 1,
-    display: 'flex',
-    backgroundColor: 'green',
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   userList: {
-    width: '100%',
-    backgroundColor: 'yellow',
     flex: 1,
+    width: '100%',
+    // backgroundColor: 'yellow',
   },
   userListContentContainer: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#ff00ff',
+    // backgroundColor: '#ff00ff',
   },
 });
