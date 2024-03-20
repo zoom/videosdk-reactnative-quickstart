@@ -4,9 +4,7 @@
 // WHICH IS NOT SAFE TO STORE ON DEVICE!
 
 import { sign } from 'react-native-pure-jwt';
-
-const ZOOM_APP_KEY = "";
-const ZOOM_APP_SECRET = "";
+import { ZOOM_APP_KEY, ZOOM_APP_SECRET } from '../config';
 
 function makeId(length: number) {
   var result = '';
