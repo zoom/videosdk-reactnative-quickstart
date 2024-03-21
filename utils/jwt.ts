@@ -21,8 +21,6 @@ export default async function generateJwt(
   sessionName: string,
   roleType: string
 ) {
-  // Ignoring because it hates on this for some reason.
-  // @ts-ignore
   try {
     const token = await sign(
       {

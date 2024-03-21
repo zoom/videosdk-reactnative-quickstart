@@ -1,8 +1,9 @@
-import { useRef, useCallback, useEffect } from 'react';
-import { PermissionsAndroid, Platform } from 'react-native';
+import { useEffect } from "react";
+import { ColorValue, PermissionsAndroid, Platform, Text, TouchableOpacity } from "react-native";
 import { EventType, ZoomVideoSdkUserType } from "@zoom/react-native-videosdk";
 import { ZoomVideoSdkContext } from "@zoom/react-native-videosdk/lib/typescript/Context";
 import { EmitterSubscription } from "react-native";
+import { styles } from "./styles";
 
 export async function requestCameraAndAudioPermission() {
   try {
@@ -11,10 +12,8 @@ export async function requestCameraAndAudioPermission() {
       PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
     ]);
     if (
-      granted["android.permission.RECORD_AUDIO"] ===
-      PermissionsAndroid.RESULTS.GRANTED &&
-      granted["android.permission.CAMERA"] ===
-      PermissionsAndroid.RESULTS.GRANTED
+      granted["android.permission.RECORD_AUDIO"] === PermissionsAndroid.RESULTS.GRANTED &&
+      granted["android.permission.CAMERA"] === PermissionsAndroid.RESULTS.GRANTED
     ) {
       console.log("You can use the cameras & mic");
     } else {
@@ -28,17 +27,22 @@ export async function requestCameraAndAudioPermission() {
 export const usePermission = () => {
   useEffect(() => {
     if (Platform.OS === "android") {
-      requestCameraAndAudioPermission().then(() => {
-        console.log("requested!");
-      });
+      requestCameraAndAudioPermission();
     }
   }, []);
+};
+
+export default function Button(props: { onPress: () => void; title: string; color?: ColorValue }) {
+  const { onPress, title, color = "#0e71eb" } = props;
+  return (
+    <TouchableOpacity style={{ ...styles.button, backgroundColor: color }} onPress={onPress}>
+      <Text style={styles.text}>{title}</Text>
+    </TouchableOpacity>
+  );
 }
 
-
 declare module "@zoom/react-native-videosdk" {
-  export function useZoom(): Omit<ZoomVideoSdkContext, "addListener"> &
-    CustomEvents;
+  export function useZoom(): Omit<ZoomVideoSdkContext, "addListener"> & CustomEvents;
   export function getRemoteUsers(): Promise<ZoomVideoSdkUserType[]>;
   export interface CustomEvents {
     addListener(
@@ -47,17 +51,11 @@ declare module "@zoom/react-native-videosdk" {
     ): EmitterSubscription;
     addListener(
       event: EventType.onUserJoin,
-      handler: (event: {
-        joinedUsers: userFromEvent[];
-        remoteUsers: userFromEvent[];
-      }) => void
+      handler: (event: { joinedUsers: userFromEvent[]; remoteUsers: userFromEvent[] }) => void
     ): EmitterSubscription;
     addListener(
       event: EventType.onUserLeave,
-      handler: (event: {
-        leftUsers: userFromEvent[];
-        remoteUsers: userFromEvent[];
-      }) => void
+      handler: (event: { leftUsers: userFromEvent[]; remoteUsers: userFromEvent[] }) => void
     ): EmitterSubscription;
     addListener(
       event: EventType.onUserAudioStatusChanged,
@@ -67,10 +65,7 @@ declare module "@zoom/react-native-videosdk" {
       event: EventType.onUserVideoStatusChanged,
       handler: (event: { changedUsers: userFromEvent[] }) => void
     ): EmitterSubscription;
-    addListener(
-      event: EventType,
-      handler: (data?: any) => void
-    ): EmitterSubscription;
+    addListener(event: EventType, handler: (data?: any) => void): EmitterSubscription;
   }
 }
 
