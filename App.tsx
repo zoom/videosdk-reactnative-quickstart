@@ -1,9 +1,9 @@
-import { useRef, useState } from "react";
-import { EmitterSubscription, SafeAreaView, Text, View } from "react-native";
-import Button, { usePermission } from "./utils/lib";
-import generateJwt from "./utils/jwt";
-import { styles } from "./utils/styles";
-import { config } from "./config";
+import React, {useRef, useState} from 'react';
+import {EmitterSubscription, SafeAreaView, Text, View} from 'react-native';
+import Button, {usePermission} from './utils/lib';
+import generateJwt from './utils/jwt';
+import {styles} from './utils/styles';
+import {config} from './config';
 import {
   EventType,
   VideoAspect,
@@ -11,13 +11,13 @@ import {
   ZoomVideoSdkUser,
   ZoomView,
   useZoom,
-} from "@zoom/react-native-videosdk";
+} from '@zoom/react-native-videosdk';
 
 export default function App() {
   usePermission();
 
   return (
-    <ZoomVideoSdkProvider config={{ appGroupId: "test", domain: "zoom.us", enableLog: true }}>
+    <ZoomVideoSdkProvider config={{appGroupId: 'test', domain: 'zoom.us', enableLog: true}}>
       <SafeAreaView style={styles.safe}>
         <Call />
       </SafeAreaView>
@@ -45,35 +45,35 @@ const Call = () => {
     });
     listeners.current.push(sessionJoin);
 
-    const userJoin = zoom.addListener(EventType.onUserJoin, async (event) => {
-      const { remoteUsers } = event;
+    const userJoin = zoom.addListener(EventType.onUserJoin, async event => {
+      const {remoteUsers} = event;
       const mySelf = await zoom.session.getMySelf();
-      const remote = remoteUsers.map((user) => new ZoomVideoSdkUser(user));
+      const remote = remoteUsers.map(user => new ZoomVideoSdkUser(user));
       setUsersInSession([mySelf, ...remote]);
     });
     listeners.current.push(userJoin);
 
-    const userLeave = zoom.addListener(EventType.onUserLeave, async (event) => {
-      const { remoteUsers } = event;
+    const userLeave = zoom.addListener(EventType.onUserLeave, async event => {
+      const {remoteUsers} = event;
       const mySelf = await zoom.session.getMySelf();
-      const remote = remoteUsers.map((user) => new ZoomVideoSdkUser(user));
+      const remote = remoteUsers.map(user => new ZoomVideoSdkUser(user));
       setUsersInSession([mySelf, ...remote]);
     });
     listeners.current.push(userLeave);
 
-    const userVideo = zoom.addListener(EventType.onUserVideoStatusChanged, async (event) => {
-      const { changedUsers } = event;
+    const userVideo = zoom.addListener(EventType.onUserVideoStatusChanged, async event => {
+      const {changedUsers} = event;
       const mySelf = new ZoomVideoSdkUser(await zoom.session.getMySelf());
-      changedUsers.find((user) => user.userId === mySelf.userId) &&
-        mySelf.videoStatus.isOn().then((on) => setIsVideoMuted(!on));
+      changedUsers.find(user => user.userId === mySelf.userId) &&
+        mySelf.videoStatus.isOn().then(on => setIsVideoMuted(!on));
     });
     listeners.current.push(userVideo);
 
-    const userAudio = zoom.addListener(EventType.onUserAudioStatusChanged, async (event) => {
-      const { changedUsers } = event;
+    const userAudio = zoom.addListener(EventType.onUserAudioStatusChanged, async event => {
+      const {changedUsers} = event;
       const mySelf = new ZoomVideoSdkUser(await zoom.session.getMySelf());
-      changedUsers.find((user) => user.userId === mySelf.userId) &&
-        mySelf.audioStatus.isMuted().then((muted) => setIsAudioMuted(muted));
+      changedUsers.find(user => user.userId === mySelf.userId) &&
+        mySelf.audioStatus.isMuted().then(muted => setIsAudioMuted(muted));
     });
     listeners.current.push(userAudio);
 
@@ -89,11 +89,15 @@ const Call = () => {
         sessionPassword: config.sessionPassword,
         token: token,
         userName: config.displayName,
-        audioOptions: { connect: true, mute: true, autoAdjustSpeakerVolume: false },
-        videoOptions: { localVideoOn: true },
+        audioOptions: {
+          connect: true,
+          mute: true,
+          autoAdjustSpeakerVolume: false,
+        },
+        videoOptions: {localVideoOn: true},
         sessionIdleTimeoutMins: config.sessionIdleTimeoutMins,
       })
-      .catch((e) => {
+      .catch(e => {
         console.log(e);
       });
   };
@@ -101,13 +105,13 @@ const Call = () => {
   const leaveSession = () => {
     zoom.leaveSession(false);
     setIsInSession(false);
-    listeners.current.forEach((listener) => listener.remove());
+    listeners.current.forEach(listener => listener.remove());
     listeners.current = [];
   };
 
   return isInSession ? (
     <View style={styles.container}>
-      {users.map((user) => (
+      {users.map(user => (
         <View style={styles.container} key={user.userId}>
           <ZoomView
             style={styles.container}
@@ -118,7 +122,7 @@ const Call = () => {
         </View>
       ))}
       <MuteButtons isAudioMuted={isAudioMuted} isVideoMuted={isVideoMuted} />
-      <Button title="Leave Session" color={"#f01040"} onPress={leaveSession} />
+      <Button title="Leave Session" color={'#f01040'} onPress={leaveSession} />
     </View>
   ) : (
     <View style={styles.container}>
@@ -130,7 +134,7 @@ const Call = () => {
   );
 };
 
-const MuteButtons = ({ isAudioMuted, isVideoMuted }: { isAudioMuted: boolean; isVideoMuted: boolean }) => {
+const MuteButtons = ({isAudioMuted, isVideoMuted}: {isAudioMuted: boolean; isVideoMuted: boolean}) => {
   const zoom = useZoom();
   const onPressAudio = async () => {
     const mySelf = await zoom.session.getMySelf();
@@ -147,9 +151,9 @@ const MuteButtons = ({ isAudioMuted, isVideoMuted }: { isAudioMuted: boolean; is
   };
   return (
     <View style={styles.buttonHolder}>
-      <Button title={isAudioMuted ? "Unmute Audio" : "Mute Audio"} onPress={onPressAudio} />
+      <Button title={isAudioMuted ? 'Unmute Audio' : 'Mute Audio'} onPress={onPressAudio} />
       <View style={styles.spacer} />
-      <Button title={isVideoMuted ? "Unmute Video" : "Mute Video"} onPress={onPressVideo} />
+      <Button title={isVideoMuted ? 'Unmute Video' : 'Mute Video'} onPress={onPressVideo} />
     </View>
   );
 };
