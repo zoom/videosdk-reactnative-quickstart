@@ -39,9 +39,9 @@ npx pod-install ## (or) cd ios && pod install
 5. Run the app
 
 ```bash
-npx expo run:ios
+yarn ios
 # or
-npx expo run:android
+yarn android
 ```
 
 ## How to setup in a fresh project
