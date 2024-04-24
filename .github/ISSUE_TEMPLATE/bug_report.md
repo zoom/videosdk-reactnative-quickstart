@@ -23,15 +23,17 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Platform (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
-Version of:
+**Evironemnt version of: (please complete the following information):**
+ - MacOS/Linux/Windows:
  - Node:
  - Yarn:
- - Cocoapods (if iOS):
  - React Native:
+ - Cocoapods (if iOS):
  - Expo (if used):
+
+**Target Platform (please complete the following information):**
+ - Device: [e.g. iPhone6]
+ - OS: [e.g. iOS8.1]
 
 **Additional context**
 Add any other context about the problem here.
