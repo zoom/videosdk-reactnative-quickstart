@@ -15,7 +15,7 @@ This is a sample application that demonstrates how to use the Zoom Video SDK in 
 1. Clone the Repo
 
 ```bash
-git clone https://github.com/zoom/VideoSDK-React-Native.git
+git clone https://github.com/zoom/VideoSDK-ReactNative-Quickstart.git
 ```
 
 2. Install the dependencies
