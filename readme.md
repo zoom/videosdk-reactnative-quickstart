@@ -2,7 +2,7 @@
 
 Use of this sample app is subject to our [Terms of Use](https://explore.zoom.us/en/video-sdk-terms/).
 
-This is a sample application that demonstrates how to use the Zoom Video SDK in a React Native application. Built with [Expo](https://https://docs.expo.dev/).
+This is a sample application that demonstrates how to use the Zoom Video SDK in a React Native application. Built with [Expo](https://docs.expo.dev/).
 
 ## Prerequisites
 
