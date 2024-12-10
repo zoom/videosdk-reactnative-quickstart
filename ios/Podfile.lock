@@ -976,12 +976,12 @@ PODS:
   - react-native-pure-jwt (3.0.2):
     - JWT (= 3.0.0-beta.12)
     - React
-  - react-native-zoom-video-sdk (1.12.10):
+  - react-native-zoom-video-sdk (1.13.10):
     - React-Core
-    - ZoomVideoSDK/CptShare (= 1.12.10)
-    - ZoomVideoSDK/zm_annoter_dynamic (= 1.12.10)
-    - ZoomVideoSDK/zoomcml (= 1.12.10)
-    - ZoomVideoSDK/ZoomVideoSDK (= 1.12.10)
+    - ZoomVideoSDK/CptShare (= 1.13.10)
+    - ZoomVideoSDK/zm_annoter_dynamic (= 1.13.10)
+    - ZoomVideoSDK/zoomcml (= 1.13.10)
+    - ZoomVideoSDK/ZoomVideoSDK (= 1.13.10)
   - React-nativeconfig (0.74.5)
   - React-NativeModulesApple (0.74.5):
     - glog
@@ -1213,10 +1213,10 @@ PODS:
     - React-utils (= 0.74.5)
   - SocketRocket (0.7.0)
   - Yoga (0.0.0)
-  - ZoomVideoSDK/CptShare (1.12.10)
-  - ZoomVideoSDK/zm_annoter_dynamic (1.12.10)
-  - ZoomVideoSDK/zoomcml (1.12.10)
-  - ZoomVideoSDK/ZoomVideoSDK (1.12.10)
+  - ZoomVideoSDK/CptShare (1.13.10)
+  - ZoomVideoSDK/zm_annoter_dynamic (1.13.10)
+  - ZoomVideoSDK/zoomcml (1.13.10)
+  - ZoomVideoSDK/ZoomVideoSDK (1.13.10)
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
@@ -1462,7 +1462,7 @@ SPEC CHECKSUMS:
   React-logger: 257858bd55f3a4e1bc0cf07ddc8fb9faba6f8c7c
   React-Mapbuffer: 6c1cacdbf40b531f549eba249e531a7d0bfd8e7f
   react-native-pure-jwt: c7aabf3e38f688922741774c5b37d1288fc64311
-  react-native-zoom-video-sdk: 8b803d580feb496428cd99e1ed743e0f23eafe98
+  react-native-zoom-video-sdk: 50dd141307afce1bf946fb9181d94a2cbd14d4db
   React-nativeconfig: ba9a2e54e2f0882cf7882698825052793ed4c851
   React-NativeModulesApple: 8d11ff8955181540585c944cf48e9e7236952697
   React-perflogger: ed4e0c65781521e0424f2e5e40b40cc7879d737e
@@ -1488,8 +1488,8 @@ SPEC CHECKSUMS:
   ReactCommon: f7da14a8827b72704169a48c929bcde802698361
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: 950bbfd7e6f04790fdb51149ed51df41f329fcc8
-  ZoomVideoSDK: 4ad13d8828d2af3d3fb0b742ef68c0f71d22e85c
+  ZoomVideoSDK: 73f731204065d40aa1d816e70db1c866fdfde496
 
 PODFILE CHECKSUM: 02887c95491506e86d3db484e00dbda230052c2f
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

@@ -1748,10 +1748,10 @@
   resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.7.13.tgz#ff34942667a4e19a9f4a0996a76814daac364cf3"
   integrity sha512-lm2GW5PkosIzccsaZIz7tp8cPADSIlIHWDFTR1N0SzfinhhYgeIQjFMz4rYzanCScr3DqQLeomUDArp6MWKm+g==
 
-"@zoom/react-native-videosdk@^1.12.10":
-  version "1.12.10"
-  resolved "https://registry.yarnpkg.com/@zoom/react-native-videosdk/-/react-native-videosdk-1.12.10.tgz#f49190efcf8d0e1aaafd4fe3c737a3e0ab834eb7"
-  integrity sha512-4x5A2sbqe+gskZCLWI3v5RFsrM+ikXT/WDYOSb21wukXRT+6YMQ7wPm0D0g+L4qt+Fawp8J+Wd3qaBqodX38rA==
+"@zoom/react-native-videosdk@^1.13.10":
+  version "1.13.10"
+  resolved "https://registry.yarnpkg.com/@zoom/react-native-videosdk/-/react-native-videosdk-1.13.10.tgz#7c9871c2657304127b00ffb1722a9a49132370ae"
+  integrity sha512-Pq/mH3Z8Q4gF7BDvJkE0KukY7ra7sm1orq9xlr0cpjB5HBuzWV7Ow7OPUgRZD2P87L8NJwD2JexDGgye0Bo3bQ==
   dependencies:
     assert "^2.0.0"
     yarn "^1.22.18"

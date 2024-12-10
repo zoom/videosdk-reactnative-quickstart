@@ -9,7 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@zoom/react-native-videosdk": "^1.12.10",
+    "@zoom/react-native-videosdk": "^1.13.10",
     "expo": "^51.0.38",
     "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
