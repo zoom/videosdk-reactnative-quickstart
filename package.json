@@ -18,7 +18,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/bottom-tabs": "^7.0.0",
     "@react-navigation/native": "^7.0.0",
-    "@zoom/react-native-videosdk": "^2.1.10",
+    "@zoom/react-native-videosdk": "^2.2.0",
     "expo": "~52.0.17",
     "expo-blur": "~14.0.1",
     "expo-constants": "~17.0.3",

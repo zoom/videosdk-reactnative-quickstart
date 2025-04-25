@@ -1386,12 +1386,12 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-zoom-video-sdk (2.1.10):
+  - react-native-zoom-video-sdk (2.2.0):
     - React-Core
-    - ZoomVideoSDK/CptShare (= 2.1.10)
-    - ZoomVideoSDK/zm_annoter_dynamic (= 2.1.10)
-    - ZoomVideoSDK/zoomcml (= 2.1.10)
-    - ZoomVideoSDK/ZoomVideoSDK (= 2.1.10)
+    - ZoomVideoSDK/CptShare (= 2.2.0)
+    - ZoomVideoSDK/zm_annoter_dynamic (= 2.2.0)
+    - ZoomVideoSDK/zoomcml (= 2.2.0)
+    - ZoomVideoSDK/ZoomVideoSDK (= 2.2.0)
   - React-nativeconfig (0.76.3)
   - React-NativeModulesApple (0.76.3):
     - glog
@@ -1814,10 +1814,10 @@ PODS:
     - Yoga
   - SocketRocket (0.7.1)
   - Yoga (0.0.0)
-  - ZoomVideoSDK/CptShare (2.1.10)
-  - ZoomVideoSDK/zm_annoter_dynamic (2.1.10)
-  - ZoomVideoSDK/zoomcml (2.1.10)
-  - ZoomVideoSDK/ZoomVideoSDK (2.1.10)
+  - ZoomVideoSDK/CptShare (2.2.0)
+  - ZoomVideoSDK/zm_annoter_dynamic (2.2.0)
+  - ZoomVideoSDK/zoomcml (2.2.0)
+  - ZoomVideoSDK/ZoomVideoSDK (2.2.0)
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
@@ -2144,7 +2144,7 @@ SPEC CHECKSUMS:
   react-native-pure-jwt: c7aabf3e38f688922741774c5b37d1288fc64311
   react-native-safe-area-context: 458f6b948437afcb59198016b26bbd02ff9c3b47
   react-native-webview: 40b8823be3fac70f0404016e6aed754ef4307517
-  react-native-zoom-video-sdk: b56344ad978eaba8952148735b465f9176e113cd
+  react-native-zoom-video-sdk: 83c593980a5ffa765c9453c90d1ebec870c3f9ac
   React-nativeconfig: aeed6e2a8ac02b2df54476afcc7c663416c12bf7
   React-NativeModulesApple: c5b7813da94136f50ef084fa1ac077332dcfc658
   React-perflogger: 6afb7eebf7d9521cc70481688ccddf212970e9d3
@@ -2177,7 +2177,7 @@ SPEC CHECKSUMS:
   RNScreens: 27587018b2e6082f5172b1ecf158c14a0e8842d6
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 3deb2471faa9916c8a82dda2a22d3fba2620ad37
-  ZoomVideoSDK: 94e939820e57a075c5e712559f927017da0de06a
+  ZoomVideoSDK: eab0e12b966b25dea9c7496d732e52988ffc4f99
 
 PODFILE CHECKSUM: d395ce5129bed38af045ed6fe3549f8eb59142d2
 
