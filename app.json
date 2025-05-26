@@ -3,7 +3,7 @@
     "name": "zoom-expo",
     "slug": "zoom-expo",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
@@ -16,11 +16,11 @@
         "NSMicrophoneUsageDescription": "This app uses the microphone to record audio"
       }
     },
-    "android": {      
+    "android": {
       "adaptiveIcon": {
-      "foregroundImage": "./assets/images/adaptive-icon.png",
-      "backgroundColor": "#ffffff"
-    },
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
       "package": "com.ekaansh.zoomexpo"
     },
     "web": {
@@ -38,7 +38,9 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
