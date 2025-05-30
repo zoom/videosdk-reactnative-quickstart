@@ -105,21 +105,27 @@ const Call = () => {
     listeners.current = [];
   };
 
+
   return isInSession ? (
     <View style={styles.container}>
-      {users.map((user) => (
-        <View style={styles.container} key={user.userId}>
-          <ZoomView
-            style={styles.container}
-            userId={user.userId}
-            fullScreen
-            videoAspect={VideoAspect.PanAndScan}
-          />
-        </View>
-      ))}
+        <FlatList
+          style={styles.userList}
+          contentContainerStyle={styles.userListContentContainer}
+          data={users}
+          extraData={users}
+          renderItem={({ item }) => (
+            <ZoomView
+              userId={item.userId}
+              isSharingCamera={false}
+              key={item.userId}
+              style={styles.smallView}
+            />
+          )}
+          horizontal
+        />
       <MuteButtons isAudioMuted={isAudioMuted} isVideoMuted={isVideoMuted} />
       <Button title="Leave Session" color={"#f01040"} onPress={leaveSession} />
-    </View>
+  </View>
   ) : (
     <View style={styles.container}>
       <Text style={styles.heading}>Zoom Video SDK</Text>
