@@ -44,4 +44,23 @@ export const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: 'white',
   },
+  smallView: {
+      width: 200,
+      height: 200,
+      marginHorizontal: 4,
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden',
+      borderWidth: 1,
+      borderRadius: 8,
+      borderColor: '#666',
+      backgroundColor: '#232323',
+    },
+    userList: {
+      width: '100%',
+    },
+  userListContentContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
 });
