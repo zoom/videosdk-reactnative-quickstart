@@ -1539,12 +1539,12 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-zoom-video-sdk (2.2.0):
+  - react-native-zoom-video-sdk (2.2.5):
     - React-Core
-    - ZoomVideoSDK/CptShare (= 2.2.0)
-    - ZoomVideoSDK/zm_annoter_dynamic (= 2.2.0)
-    - ZoomVideoSDK/zoomcml (= 2.2.0)
-    - ZoomVideoSDK/ZoomVideoSDK (= 2.2.0)
+    - ZoomVideoSDK/CptShare (= 2.2.5)
+    - ZoomVideoSDK/zm_annoter_dynamic (= 2.2.5)
+    - ZoomVideoSDK/zoomcml (= 2.2.5)
+    - ZoomVideoSDK/ZoomVideoSDK (= 2.2.5)
   - React-NativeModulesApple (0.79.2):
     - glog
     - hermes-engine
@@ -2079,10 +2079,10 @@ PODS:
     - SDWebImage/Core (~> 5.17)
   - SocketRocket (0.7.1)
   - Yoga (0.0.0)
-  - ZoomVideoSDK/CptShare (2.2.0)
-  - ZoomVideoSDK/zm_annoter_dynamic (2.2.0)
-  - ZoomVideoSDK/zoomcml (2.2.0)
-  - ZoomVideoSDK/ZoomVideoSDK (2.2.0)
+  - ZoomVideoSDK/CptShare (2.2.5)
+  - ZoomVideoSDK/zm_annoter_dynamic (2.2.5)
+  - ZoomVideoSDK/zoomcml (2.2.5)
+  - ZoomVideoSDK/ZoomVideoSDK (2.2.5)
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
@@ -2447,7 +2447,7 @@ SPEC CHECKSUMS:
   react-native-pure-jwt: 0d332f378799316e6e7a79a7e262a246d907cdfb
   react-native-safe-area-context: 00d03dc688ba86664be66f9e3f203fc7d747d899
   react-native-webview: cde150463e7caa49b316b0ed1871e7ef8193bef4
-  react-native-zoom-video-sdk: 83c593980a5ffa765c9453c90d1ebec870c3f9ac
+  react-native-zoom-video-sdk: 3d5e05b72407851690b5b8993b3a1164641c8de5
   React-NativeModulesApple: 452b86b29fae99ed0a4015dca3ad9cd222f88abf
   React-oscompat: ef5df1c734f19b8003e149317d041b8ce1f7d29c
   React-perflogger: 6fd2f6811533e9c19a61e855c3033eecbf4ad2a0
@@ -2488,7 +2488,7 @@ SPEC CHECKSUMS:
   SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: c758bfb934100bb4bf9cbaccb52557cee35e8bdf
-  ZoomVideoSDK: eab0e12b966b25dea9c7496d732e52988ffc4f99
+  ZoomVideoSDK: bb04b81061b1683122faec919bc0c52a652ecafb
 
 PODFILE CHECKSUM: 306255413157d830f0fe9864b93b5daff6562698
 
