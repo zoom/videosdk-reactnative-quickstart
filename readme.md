@@ -7,7 +7,8 @@ This is a sample application that demonstrates how to use the Zoom Video SDK in 
 ## Prerequisites
 
 - [Environment setup](https://reactnative.dev/docs/environment-setup) for React Native
-- Node (LTS) & Yarn
+- Node (LTS)
+- [Bun](https://bun.sh/) (or a package manager of your choice)
 - A Zoom [Video SDK Account](https://developers.zoom.us/docs/video-sdk/get-credentials/)
 
 ## Getting Started
@@ -21,13 +22,13 @@ git clone https://github.com/zoom/VideoSDK-ReactNative-Quickstart.git
 2. Install the dependencies
 
 ```bash
-yarn
+bun install
 ```
 
 3. Install cocoapods (iOS only)
 
 ```bash
-npx pod-install ## (or) cd ios && pod install
+bunx pod-install ## (or) cd ios && pod install
 ```
 
 4. Add your Zoom Video SDK credentials
@@ -39,9 +40,9 @@ npx pod-install ## (or) cd ios && pod install
 5. Run the app
 
 ```bash
-yarn ios
+bunx expo run:ios
 # or
-yarn android
+bunx expo run:android
 ```
 
 ## How to setup in a fresh project
@@ -49,15 +50,15 @@ yarn android
 1. Create a new project, we recommend using Expo to simplify the setup
 
 ```bash
-yarn create expo zoom-video-sdk --template # select Blank (Typescript)
+bunx create-expo-app zoom-video-sdk --template # select Blank (Typescript)
 # or
-npx react-native@latest init zoomRNCli --template react-native-template-typescript
+bunx react-native@latest init zoomRNCli --template react-native-template-typescript
 ```
 
 2. Install the Zoom Video SDK
 
 ```bash
-yarn add @zoom/react-native-videosdk
+bunx expo add @zoom/react-native-videosdk
 ```
 
 - For iOS run: `npx pod-install` to install the pods
@@ -113,7 +114,7 @@ function YourApp() {
 6. Scaffold the native code (Skip if not using Expo)
 
 ```bash
-npx expo prebuild
+bunx expo prebuild
 ```
 
 7. Run the app
@@ -121,17 +122,17 @@ npx expo prebuild
 - Expo
 
 ```bash
-npx expo run:ios
+bunx expo run:ios
 # or
-npx expo run:android
+bunx expo run:android
 ```
 
 - React Native
 
 ```bash
-npm run android
+bun run android
 # or
-npm run ios
+bun run ios
 ```
 
 ## Need help?
