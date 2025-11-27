@@ -90,7 +90,7 @@ android {
     namespace 'com.ekaansh.zoomexpo'
     defaultConfig {
         applicationId 'com.ekaansh.zoomexpo'
-        minSdkVersion "26"
+        minSdkVersion "28"
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0.0"
