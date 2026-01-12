@@ -8,7 +8,7 @@
         "@react-navigation/bottom-tabs": "^7.3.10",
         "@react-navigation/elements": "^2.3.8",
         "@react-navigation/native": "^7.1.6",
-        "@zoom/react-native-videosdk": "^2.4.0",
+        "@zoom/react-native-videosdk": "^2.4.5",
         "expo": "^54.0.25",
         "expo-blur": "~15.0.7",
         "expo-constants": "~18.0.10",
@@ -550,7 +550,7 @@
 
     "@xmldom/xmldom": ["@xmldom/xmldom@0.8.10", "", {}, "sha512-2WALfTl4xo2SkGCYRt6rDTFfk9R1czmBvUQy12gK2KuRKIpWEhcbbzy8EZXtz/jkRqHX8bFEc6FC1HjX4TUWYw=="],
 
-    "@zoom/react-native-videosdk": ["@zoom/react-native-videosdk@2.4.0", "", { "dependencies": { "assert": "^2.0.0", "yarn": "^1.22.18" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-/1d/Tjy0ZM4uFhmVzU9O+3KovKiRHPvs76+pIOVyKLJIG07iONf5u4pyTggiHyJTnodpB1mjYij4sRUqa5vOjg=="],
+    "@zoom/react-native-videosdk": ["@zoom/react-native-videosdk@2.4.5", "", { "dependencies": { "assert": "^2.0.0", "yarn": "^1.22.18" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-DPuNcxzEfAkjRFTnLAvVmMZ9D8aW9P+KqehxD5lAT5qiIZwtP/0my5DZIHs3c9fCeHIyQDDLyR7flbYewM0q8Q=="],
 
     "abort-controller": ["abort-controller@3.0.0", "", { "dependencies": { "event-target-shim": "^5.0.0" } }, "sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg=="],
 

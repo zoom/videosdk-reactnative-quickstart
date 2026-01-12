@@ -1980,13 +1980,13 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-zoom-video-sdk (2.4.0):
+  - react-native-zoom-video-sdk (2.4.5):
     - React-Core
-    - ZoomVideoSDK/CptShare (= 2.4.0)
-    - ZoomVideoSDK/zm_annoter_dynamic (= 2.4.0)
-    - ZoomVideoSDK/zoomcml (= 2.4.0)
-    - ZoomVideoSDK/ZoomTask (= 2.4.0)
-    - ZoomVideoSDK/ZoomVideoSDK (= 2.4.0)
+    - ZoomVideoSDK/CptShare (= 2.4.5)
+    - ZoomVideoSDK/zm_annoter_dynamic (= 2.4.5)
+    - ZoomVideoSDK/zoomcml (= 2.4.5)
+    - ZoomVideoSDK/ZoomTask (= 2.4.5)
+    - ZoomVideoSDK/ZoomVideoSDK (= 2.4.5)
   - React-NativeModulesApple (0.81.5):
     - boost
     - DoubleConversion
@@ -2760,9 +2760,9 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - SDWebImage (5.21.3):
-    - SDWebImage/Core (= 5.21.3)
-  - SDWebImage/Core (5.21.3)
+  - SDWebImage (5.21.5):
+    - SDWebImage/Core (= 5.21.5)
+  - SDWebImage/Core (5.21.5)
   - SDWebImageAVIFCoder (0.11.1):
     - libavif/core (>= 0.11.0)
     - SDWebImage (~> 5.10)
@@ -2773,11 +2773,11 @@ PODS:
     - SDWebImage/Core (~> 5.17)
   - SocketRocket (0.7.1)
   - Yoga (0.0.0)
-  - ZoomVideoSDK/CptShare (2.4.0)
-  - ZoomVideoSDK/zm_annoter_dynamic (2.4.0)
-  - ZoomVideoSDK/zoomcml (2.4.0)
-  - ZoomVideoSDK/ZoomTask (2.4.0)
-  - ZoomVideoSDK/ZoomVideoSDK (2.4.0)
+  - ZoomVideoSDK/CptShare (2.4.5)
+  - ZoomVideoSDK/zm_annoter_dynamic (2.4.5)
+  - ZoomVideoSDK/zoomcml (2.4.5)
+  - ZoomVideoSDK/ZoomTask (2.4.5)
+  - ZoomVideoSDK/ZoomVideoSDK (2.4.5)
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
@@ -3150,7 +3150,7 @@ SPEC CHECKSUMS:
   react-native-pure-jwt: ddc75cb6ec8fe40c8efa6b5ca2cd41eadc914056
   react-native-safe-area-context: c00143b4823773bba23f2f19f85663ae89ceb460
   react-native-webview: 4cbb7f05f2c50671a7dcff4012d3e85faad271e4
-  react-native-zoom-video-sdk: f78ff2bd567cc8d53454d9c4ea00a3bac129d8ea
+  react-native-zoom-video-sdk: 439347fedda90bdaddf1bf3f3a1904531c1007c5
   React-NativeModulesApple: ebf2ce72b35870036900d6498b33724386540a71
   React-oscompat: eb0626e8ba1a2c61673c991bf9dc21834898475d
   React-perflogger: 509e1f9a3ee28df71b0a66de806ac515ce951246
@@ -3185,13 +3185,13 @@ SPEC CHECKSUMS:
   RNReanimated: 142b5513b136714ea7abef65b46e04c12ce7194e
   RNScreens: 0bbf16c074ae6bb1058a7bf2d1ae017f4306797c
   RNWorklets: ad0606bee2a8103c14adb412149789c60b72bfb2
-  SDWebImage: 16309af6d214ba3f77a7c6f6fdda888cb313a50a
+  SDWebImage: e9c98383c7572d713c1a0d7dd2783b10599b9838
   SDWebImageAVIFCoder: afe194a084e851f70228e4be35ef651df0fc5c57
   SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
   SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 728df40394d49f3f471688747cf558158b3a3bd1
-  ZoomVideoSDK: c3ac797074847382d9b539044d77f5971d6b62cd
+  ZoomVideoSDK: 95a0f2a86f8e267fcad3895d5aee042d34be707b
 
 PODFILE CHECKSUM: 306255413157d830f0fe9864b93b5daff6562698
 
