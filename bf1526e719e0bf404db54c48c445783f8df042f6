@@ -1,0 +1,49 @@
+app/index.tsx
+  426feb12b5a2f8ba 46,127
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.42",
+  "base_commit_sha": "bf1526e719e0bf404db54c48c445783f8df042f6",
+  "prompts": {
+    "426feb12b5a2f8ba": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "41496e58-b612-4c8f-a0f1-25c6053b34ac",
+        "model": "default"
+      },
+      "human_author": "ekaansh <ekaansh68@gmail.com>",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 1,
+      "accepted_lines": 2,
+      "overriden_lines": 2
+    },
+    "b9d1bfb46adab114": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "a77981bc-4ac1-4ea9-933d-70b8877adadf",
+        "model": "default"
+      },
+      "human_author": "ekaansh <ekaansh68@gmail.com>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 2,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "feddf9481720cbf1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa8f0de3-f131-4a1d-9496-123f16cd8065",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "ekaansh <ekaansh68@gmail.com>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 1,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}
