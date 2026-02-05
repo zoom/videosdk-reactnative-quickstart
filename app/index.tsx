@@ -1,16 +1,8 @@
-import {
-  EventType,
-  VideoAspect,
-  ZoomVideoSdkProvider,
-  ZoomVideoSdkUser,
-  ZoomView,
-  useZoom
-} from "@zoom/react-native-videosdk";
+import { EventType, VideoAspect, ZoomVideoSdkProvider, ZoomVideoSdkUser, ZoomView, useZoom } from "@zoom/react-native-videosdk";
 import { useRef, useState } from "react";
-import { EmitterSubscription, Text, View } from "react-native";
+import { type EmitterSubscription, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { config } from "../config";
-import generateJwt from "../utils/jwt";
 import Button, { usePermission } from "../utils/lib";
 import { styles } from "../utils/styles";
 
@@ -28,6 +20,7 @@ export default function App() {
 
 const Call = () => {
   const zoom = useZoom();
+  const [token, setToken] = useState("");
   const listeners = useRef<EmitterSubscription[]>([]);
   const [users, setUsersInSession] = useState<ZoomVideoSdkUser[]>([]);
   const [isInSession, setIsInSession] = useState(false);
@@ -35,9 +28,6 @@ const Call = () => {
   const [isVideoMuted, setIsVideoMuted] = useState(true);
 
   const join = async () => {
-    /* Disclaimer: JWT should be generated from your server */
-    const token = await generateJwt(config.sessionName, config.roleType);
-
     const sessionJoin = zoom.addListener(EventType.onSessionJoin, async () => {
       const mySelf = new ZoomVideoSdkUser(await zoom.session.getMySelf());
       const remoteUsers = await zoom.session.getRemoteUsers();
@@ -53,7 +43,7 @@ const Call = () => {
     });
     listeners.current.push(userJoin);
 
-    const userLeave = zoom.addListener(EventType.onUserLeave, async (_event) => {
+    const userLeave = zoom.addListener(EventType.onUserLeave, async (event) => {
       const remoteUsers = await zoom.session.getRemoteUsers();
       const mySelf = await zoom.session.getMySelf();
       setUsersInSession([mySelf, ...remoteUsers]);
@@ -128,8 +118,15 @@ const Call = () => {
     <View style={styles.container}>
       <Text style={styles.heading}>Zoom Video SDK</Text>
       <Text style={styles.heading}>React Native Quickstart</Text>
+      <TextInput
+        style={styles.textInput}
+        placeholder={"Enter JWT for: " + config.sessionName}
+        value={token}
+        onChangeText={setToken}
+        autoFocus
+      />
       <View style={styles.spacer} />
-      <Button title="Join Session" onPress={join} />
+      <Button title="Join Session" onPress={join} disabled={!token.trim()} />
     </View>
   );
 };

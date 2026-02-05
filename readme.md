@@ -31,19 +31,30 @@ bun install
 bunx pod-install ## (or) cd ios && pod install
 ```
 
-4. Add your Zoom Video SDK credentials
-
-- Open `config.ts` and replace `ZOOM_APP_KEY` and `ZOOM_APP_SECRET` with your Zoom Video SDK credentials.
-
-> **Disclaimer**: It's not recommended to store your credentials in the source code. This is only for demonstration purposes for sake of simplicity. You should use a secure backend to generate the token and pass it to the client.
-
-5. Run the app
+4. Run the app
 
 ```bash
 bunx expo run:ios
 # or
 bunx expo run:android
 ```
+
+5. In the input field for the JWT, input a JWT for your session name (default: "TestOne").
+
+6. Click "Join" to join the session
+
+## JWT Helper
+The project provides a `generateToken.ts` file that can be used to generate a temporary JWT:
+1. Create a `.env` file in the root directory of the project, you can do this by copying the `.env.example` file (`cp .env.example .env`) and replacing the values with your own. The `.env` file should look like this:
+
+```
+SDK_KEY=abc123XXXXXXXXXX
+SDK_SECRET=abc123XXXXXXXXXX
+```
+
+2. Run `bun generateToken.ts TestOne --copy-to-clipboard`
+
+The script generates a token for the proivded session name and the `--copy-to-clipboard` or `-c` flag copies it to your clipboard.
 
 ## How to setup in a fresh project
 

@@ -1,8 +1,7 @@
-import { useEffect } from "react";
-import { ColorValue, PermissionsAndroid, Platform, Text, TouchableOpacity } from "react-native";
 import { EventType, ZoomVideoSdkUserType } from "@zoom/react-native-videosdk";
 import { ZoomVideoSdkContext } from "@zoom/react-native-videosdk/lib/typescript/Context";
-import { EmitterSubscription } from "react-native";
+import { useEffect } from "react";
+import { ColorValue, PermissionsAndroid, Platform, Text, TouchableOpacity, type EmitterSubscription } from "react-native";
 import { styles } from "./styles";
 
 export async function requestCameraAndAudioPermission() {
@@ -32,10 +31,10 @@ export const usePermission = () => {
   }, []);
 };
 
-export default function Button(props: { onPress: () => void; title: string; color?: ColorValue }) {
-  const { onPress, title, color = "#0e71eb" } = props;
+export default function Button(props: { onPress: () => void; title: string; color?: ColorValue; disabled?: boolean }) {
+  const { onPress, title, color = "#0e71eb", disabled = false } = props;
   return (
-    <TouchableOpacity style={{ ...styles.button, backgroundColor: color }} onPress={onPress}>
+    <TouchableOpacity style={{ ...styles.button, backgroundColor: color, opacity: disabled ? 0.5 : 1 }} onPress={onPress} disabled={disabled}>
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
@@ -69,11 +68,4 @@ declare module "@zoom/react-native-videosdk" {
   }
 }
 
-type userFromEvent = ZoomVideoSdkUserType; // this type isn't correct i think, missing methods
-// type userFromEvent = {
-//   customUserId: string;
-//   isHost: boolean;
-//   isManager: boolean;
-//   userId: string;
-//   userName: string;
-// };
+type userFromEvent = ZoomVideoSdkUserType;

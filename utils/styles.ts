@@ -44,4 +44,13 @@ export const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: 'white',
   },
+  textInput: {
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    padding: 8,
+    margin: 0,
+    marginTop: 16,
+    marginBottom: 8,
+  },
 });

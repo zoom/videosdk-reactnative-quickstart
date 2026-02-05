@@ -4,9 +4,6 @@
 // JWTs should be provided by a backend server as they require a secret
 // WHICH IS NOT SAFE TO STORE ON DEVICE!
 
-export const ZOOM_APP_KEY = "";
-export const ZOOM_APP_SECRET = "";
-
 export const config = {
   sessionName: "TestOne",
   roleType: "1",
