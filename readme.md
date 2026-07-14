@@ -25,13 +25,7 @@ git clone https://github.com/zoom/VideoSDK-ReactNative-Quickstart.git
 bun install
 ```
 
-3. Install cocoapods (iOS only)
-
-```bash
-bunx pod-install ## (or) cd ios && pod install
-```
-
-4. Run the app
+3. Run the app (the native `ios`/`android` projects are generated and pods installed automatically on first run)
 
 ```bash
 bunx expo run:ios
@@ -39,9 +33,9 @@ bunx expo run:ios
 bunx expo run:android
 ```
 
-5. In the input field for the JWT, input a JWT for your session name (default: "TestOne").
+4. In the input field for the JWT, input a JWT for your session name (default: "TestOne").
 
-6. Click "Join" to join the session
+5. Click "Join" to join the session
 
 ## JWT Helper
 The project provides a `generateToken.ts` file that can be used to generate a temporary JWT:
