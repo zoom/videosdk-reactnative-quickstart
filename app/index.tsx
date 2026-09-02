@@ -75,7 +75,7 @@ const Call = () => {
     await zoom.joinSession({
       sessionName: config.sessionName,
       sessionPassword: config.sessionPassword,
-      token: token,
+        token: token.trim(),
       userName: config.displayName,
       audioOptions: { connect: true, mute: true, autoAdjustSpeakerVolume: false },
       videoOptions: { localVideoOn: true },
@@ -123,6 +123,8 @@ const Call = () => {
         placeholder={"Enter JWT for: " + config.sessionName}
         value={token}
         onChangeText={setToken}
+        autoCapitalize="none"
+        autoCorrect={false}
         autoFocus
       />
       <View style={styles.spacer} />

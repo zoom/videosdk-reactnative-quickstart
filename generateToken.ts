@@ -72,19 +72,12 @@ function validateSessionName(sessionName: string): void {
 }
 
 function validateRole(role: number): void {
-	if (!Number.isInteger(role) || role < 0) {
+	if (!Number.isInteger(role) || (role !== 0 && role !== 1)) {
 		console.error(
 			chalk.red.bold("✗ Error:") +
-			` Invalid role: ${role}. Role must be a non-negative integer.`,
+			` Invalid role: ${role}. Use 0 (participant) or 1 (host/co-host).`,
 		);
 		process.exit(1);
-	}
-
-	if (role > 10) {
-		console.warn(
-			chalk.yellow.bold("⚠ Warning:") +
-			` Role ${role} is unusually high. Common values are 0 (host) or 1 (participant).`,
-		);
 	}
 }
 
@@ -95,7 +88,7 @@ program
 	.argument("<sessionName>", "Name of the session/topic")
 	.option(
 		"-r, --role <number>",
-		"Role type (0 = host, 1 = participant, default: 1)",
+		"Role type (0 = participant, 1 = host/co-host, default: 1)",
 		"1",
 	)
 	.option(
